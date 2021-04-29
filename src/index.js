@@ -1,1 +1,12 @@
-console.log("试运行打包")
+const  func  = ()  => {
+  console.log("hello")
+}
+func()
+
+new Promise( resolve  =>  console.log('promise') )
+
+class User {
+  constructor(){
+    console.log('new User')
+  }
+}

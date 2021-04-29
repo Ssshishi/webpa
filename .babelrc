@@ -1,0 +1,8 @@
+{
+  "presets": [
+    // "useBuiltIns": "usage"：按需加载，
+    // 只会对我们index.js当前要打包的文件中使用过的语法,比如Promise,map做polyfill,
+    // 其他es6未出现的语法,我们暂时不去做polyfill,减小打包体积
+    ["@babel/preset-env",{"useBuiltIns":"usage"}]
+  ]
+}

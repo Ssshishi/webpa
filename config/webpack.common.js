@@ -13,7 +13,13 @@ module.exports = {
     filename: "[name].[hash:6].js",
   },
   module: {
-    rules: [],
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node-modules|bower_components)/,
+        use: { loader: 'babel-loader'  }
+      }
+    ],
   },
   plugins: [
     // html模块
