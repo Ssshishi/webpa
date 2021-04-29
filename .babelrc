@@ -3,6 +3,17 @@
     // "useBuiltIns": "usage"：按需加载，
     // 只会对我们index.js当前要打包的文件中使用过的语法,比如Promise,map做polyfill,
     // 其他es6未出现的语法,我们暂时不去做polyfill,减小打包体积
-    ["@babel/preset-env",{"useBuiltIns":"usage"}]
-  ]
+    // ["@babel/preset-env",{"useBuiltIns":"usage"}],
+
+    // babel-polyfill 会污染全局作用域 如引入 Array.prototype.includes修改了Array原型
+    // babel-polyfill 引入新的对象： Promise、WeakMap 等
+    ["@babel/preset-env"]
+  ],
+  // @babel/runtime-corejs2：@babel/runtime-corejs3 打出来的包比 2 大
+
+    // @babel/runtime 提取辅助函数，ES6转码时，babel会需要一些辅助函数，比如 _extend 。
+    // babel默认会将这些辅助函数内联到每一个js文件中，通过babel的transform-runtime 将这些辅助函数 搬到 一个单独的模块babel-runtime中，这样可以减小项目文件的大小
+
+    // babel-runtime 更像是分散的 polyfill 模块，需要在各自的模块里单独引入，借助 transform-runtime 插件来自动化处理这一切，也就是说你不要在文件开头 import 相关的 polyfill，你只需使用，transform-runtime 会帮你引入
+  "plugins": [["@babel/plugin-transform-runtime", { "corejs": 2 }]]
 }
