@@ -13,7 +13,7 @@ const devServer = {
   port: 8080,
   inline: true,
   open:true,
-  host:true,
+  hot:true,
 }
 
 const devConfig = {
